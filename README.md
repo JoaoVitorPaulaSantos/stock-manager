@@ -20,13 +20,13 @@ Projeto de estudo — desenvolvido sem assistência de IA na escrita do código.
 
 ## Como rodar
 
-_(a preencher)_
-
 ### Pré-requisitos
 
-### Banco de dados
+- .NET SDK 10
+- MySQL 8.0 ou superior
+- Node.js _(a partir da etapa de front-end)_
 
-**Requisito:** MySQL 8.0 ou superior.
+### Banco de dados
 
 Antes de rodar a aplicação, crie o schema vazio:
 
@@ -42,11 +42,33 @@ As tabelas são criadas pelas migrations do EF Core — não crie nada manualmen
 | Porta | 3306 |
 | Schema | stockmanager |
 
-A connection string não é versionada. Veja a seção de configuração local.
+### Configuração local
+
+A connection string não é versionada. Após clonar o repositório,
+configure-a via User Secrets:
+
+```bash
+cd src/backend/StockManager
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=localhost;Port=3306;Database=stockmanager;User=seu_usuario;Password=sua_senha;"
+```
+
+O arquivo `appsettings.Example.json` mostra a estrutura esperada
+da configuração. Ele serve apenas como referência — não é lido
+pela aplicação.
 
 ### API
 
+```bash
+cd src/backend/StockManager
+dotnet run
+```
+
+A API sobe em `https://localhost:7286`.
+A documentação Swagger fica na raiz, disponível apenas em desenvolvimento.
+
 ### Front-end
+
+_(a preencher)_
 
 ## Convenções
 
