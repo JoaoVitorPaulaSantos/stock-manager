@@ -26,6 +26,24 @@ _(a preencher)_
 
 ### Banco de dados
 
+**Requisito:** MySQL 8.0 ou superior.
+
+Antes de rodar a aplicação, crie o schema vazio:
+
+```sql
+CREATE DATABASE stockmanager;
+```
+
+As tabelas são criadas pelas migrations do EF Core — não crie nada manualmente.
+
+| Configuração | Valor padrão |
+|---|---|
+| Host | localhost |
+| Porta | 3306 |
+| Schema | stockmanager |
+
+A connection string não é versionada. Veja a seção de configuração local.
+
 ### API
 
 ### Front-end
