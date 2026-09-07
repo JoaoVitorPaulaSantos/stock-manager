@@ -22,7 +22,7 @@ Projeto de estudo — desenvolvido sem assistência de IA na escrita do código.
 
 ### Pré-requisitos
 
-- .NET SDK 10
+- .NET SDK 8
 - MySQL 8.0 ou superior
 - Node.js _(a partir da etapa de front-end)_
 
