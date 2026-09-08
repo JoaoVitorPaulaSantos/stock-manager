@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StockManager.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using StockManager.Infrastructure.Persistence;
 namespace StockManager.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260908040708_CorrecaoDbSetErestrict")]
+    partial class CorrecaoDbSetErestrict
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,8 +148,8 @@ namespace StockManager.Infrastructure.Persistence.Migrations
 
                     b.Property<string>("Sku")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasMaxLength(6)
+                        .HasColumnType("varchar(6)");
 
                     b.Property<string>("StatusProduto")
                         .IsRequired()
@@ -167,7 +170,7 @@ namespace StockManager.Infrastructure.Persistence.Migrations
 
                     b.ToTable("Produtos", t =>
                         {
-                            t.HasCheckConstraint("CK_Produto_EstoqueMinimo", "EstoqueMinimo >= 0");
+                            t.HasCheckConstraint("CK_Produto_EstoqueMinimo", "EstoqueMinimo < 0");
                         });
                 });
 
